@@ -22,16 +22,20 @@ body {
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 /* Cake (responsive fix only) */
+<!-- Only the .cake CSS is changed -->
+<style>
+/* Cake (smaller) */
 .cake {
   position: relative;
-  width: 80vw;
-  max-width: 400px;
-  height: 40vw;
-  max-height: 200px;
+  width: 70vw;      /* smaller than 80vw */
+  max-width: 350px;  /* smaller than 400px */
+  height: 35vw;      /* smaller than 40vw */
+  max-height: 180px; /* smaller than 200px */
   background: linear-gradient(to bottom, #2c3e50, #1a252f);
   border-radius: 25px;
   box-shadow: 0 20px 35px rgba(0,0,0,0.6);
 }
+</style>
 
 /* keep your design */
 .cream { position: absolute; top: -30%; width: 100%; height: 50%; background: linear-gradient(to bottom, #dfe6e9, #b2bec3); border-radius: 50px 50px 20px 20px; }
