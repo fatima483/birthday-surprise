@@ -9,7 +9,7 @@
 /* Body and layout */
 body {
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(#0a0f1f, #1b2a49);
   display: flex;
   justify-content: center;
@@ -26,7 +26,9 @@ body {
   position: relative;
   width: 60vw;
   max-width: 300px;
-  aspect-ratio: 2.5 / 1;
+  height: calc(60vw / 2.5); /* mobile-safe aspect */
+  max-height: 120px;
+  background: #2c3e50; /* fallback */
   background: linear-gradient(to bottom, #2c3e50, #1a252f);
   border-radius: 25px;
   box-shadow: 0 20px 35px rgba(0,0,0,0.6);
@@ -38,6 +40,7 @@ body {
   top: -30%;
   width: 100%;
   height: 50%;
+  background: #dfe6e9; /* fallback */
   background: linear-gradient(to bottom, #dfe6e9, #b2bec3);
   border-radius: 50px 50px 20px 20px;
 }
@@ -53,7 +56,7 @@ body {
 }
 
 /* Drips */
-.drip { position: absolute; background: linear-gradient(#dfe6e9, #b2bec3); border-radius: 20px; }
+.drip { position: absolute; background: #dfe6e9; background: linear-gradient(#dfe6e9, #b2bec3); border-radius: 20px; }
 .drip1 { width: 10%; height: 30%; left: 20%; top: 25%; }
 .drip2 { width: 12%; height: 40%; left: 45%; top: 20%; }
 .drip3 { width: 8%; height: 25%; right: 20%; top: 27%; }
@@ -163,7 +166,7 @@ p {
 <div id="music-icon">🎵</div>
 
 <audio id="bg-music" loop>
-  <source src="birthdaysong (online-audio-converter.com).mp3" type="audio/mpeg">
+  <source src="birthdaysong.mp3" type="audio/mpeg">
 </audio>
 
 <script>
