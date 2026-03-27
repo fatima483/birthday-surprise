@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Birthday Cake</title>
+
 <style>
 /* Body and layout */
 body {
@@ -19,42 +21,79 @@ body {
 }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-/* Cake */
+/* Cake (responsive fix only) */
 .cake {
   position: relative;
-  width: 400px;
-  height: 200px;
+  width: 80vw;
+  max-width: 400px;
+  height: 40vw;
+  max-height: 200px;
   background: linear-gradient(to bottom, #2c3e50, #1a252f);
   border-radius: 25px;
   box-shadow: 0 20px 35px rgba(0,0,0,0.6);
 }
-.cream { position: absolute; top: -60px; width: 100%; height: 100px; background: linear-gradient(to bottom, #dfe6e9, #b2bec3); border-radius: 50px 50px 20px 20px; }
-.cream::after { content: ""; position: absolute; top: 10px; left: 20px; width: 80%; height: 40px; background: rgba(255,255,255,0.4); border-radius: 20px; }
-.drip { position: absolute; background: linear-gradient(#dfe6e9, #b2bec3); border-radius: 20px; }
-.drip1 { width: 40px; height: 60px; left: 80px; top: 50px; }
-.drip2 { width: 50px; height: 80px; left: 180px; top: 40px; }
-.drip3 { width: 30px; height: 50px; right: 80px; top: 55px; }
-.layer { position: absolute; width: 100%; height: 20px; background: rgba(255,255,255,0.1); border-radius: 5px; }
-.layer1 { top: 70px; }
-.layer2 { top: 130px; }
-.layer3 { top: 190px; }
 
-/* Candle and flame */
-.candle { position: absolute; top: -120px; left: 50%; transform: translateX(-50%); width: 20px; height: 80px; background: repeating-linear-gradient(#ecf0f1, #ecf0f1 8px, #3498db 8px, #3498db 16px); border-radius: 6px; }
-.flame { position: absolute; top: -30px; left: 50%; transform: translateX(-50%); width: 25px; height: 35px; background: radial-gradient(circle, #fff59d, #ff9800); border-radius: 50%; animation: flicker 0.4s infinite alternate, glow 1s infinite alternate; }
+/* keep your design */
+.cream { position: absolute; top: -30%; width: 100%; height: 50%; background: linear-gradient(to bottom, #dfe6e9, #b2bec3); border-radius: 50px 50px 20px 20px; }
+.cream::after { content: ""; position: absolute; top: 10%; left: 20%; width: 60%; height: 40%; background: rgba(255,255,255,0.4); border-radius: 20px; }
+
+.drip { position: absolute; background: linear-gradient(#dfe6e9, #b2bec3); border-radius: 20px; }
+.drip1 { width: 10%; height: 30%; left: 20%; top: 25%; }
+.drip2 { width: 12%; height: 40%; left: 45%; top: 20%; }
+.drip3 { width: 8%; height: 25%; right: 20%; top: 27%; }
+
+.layer { position: absolute; width: 100%; height: 10%; background: rgba(255,255,255,0.1); border-radius: 5px; }
+.layer1 { top: 35%; }
+.layer2 { top: 65%; }
+.layer3 { top: 95%; }
+
+/* Candle */
+.candle { position: absolute; top: -50%; left: 50%; transform: translateX(-50%); width: 5%; height: 40%; background: repeating-linear-gradient(#ecf0f1, #ecf0f1 8px, #3498db 8px, #3498db 16px); border-radius: 6px; }
+.flame { position: absolute; top: -30%; left: 50%; transform: translateX(-50%); width: 25px; height: 35px; background: radial-gradient(circle, #fff59d, #ff9800); border-radius: 50%; animation: flicker 0.4s infinite alternate, glow 1s infinite alternate; }
+
 @keyframes flicker { from { transform: translateX(-50%) scale(1); } to { transform: translateX(-50%) scale(1.25); } }
 @keyframes glow { 0% { box-shadow: 0 0 10px #ff9800; } 100% { box-shadow: 0 0 35px #ff9800; } }
 
-/* Text */
-h2 { margin-top: 50px; color: #ecf0f1; font-size: 60px; font-weight: bold; font-style: italic; text-shadow: 0 0 15px #3498db, 0 0 25px #3498db; }
-p { color: #bdc3c7; font-size: 36px; font-weight: bold; font-style: italic; text-shadow: 0 0 10px #1abc9c, 0 0 20px #1abc9c; }
+/* TEXT (responsive fix) */
+h2 {
+  margin-top: 30px;
+  color: #ecf0f1;
+  font-size: clamp(24px, 5vw, 60px);
+  text-align: center;
+  width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+  text-shadow: 0 0 15px #3498db, 0 0 25px #3498db;
+}
+
+.highlight {
+  display: block;
+}
+
+p {
+  color: #bdc3c7;
+  font-size: clamp(16px, 4vw, 36px);
+  text-align: center;
+  text-shadow: 0 0 10px #1abc9c, 0 0 20px #1abc9c;
+}
 
 /* Hearts */
-.heart { position: absolute; transform: rotate(45deg); animation: float 6s linear infinite; }
-.heart::before, .heart::after { content: ''; position: absolute; border-radius: 50%; }
-@keyframes float { 0% { bottom: -20px; opacity: 1; } 100% { bottom: 100%; opacity: 0; } }
+.heart {
+  position: absolute;
+  transform: rotate(45deg);
+  animation: float 6s linear infinite;
+}
+.heart::before, .heart::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+}
+@keyframes float {
+  0% { bottom: -20px; opacity: 1; }
+  100% { bottom: 100%; opacity: 0; }
+}
 
-/* Music icon button - enhanced */
+/* Music button (same) */
 #music-icon {
   position: fixed;
   bottom: 20px;
@@ -69,34 +108,12 @@ p { color: #bdc3c7; font-size: 36px; font-weight: bold; font-style: italic; text
   justify-content: center;
   font-size: 36px;
   cursor: pointer;
-  box-shadow: 0 0 35px #3498db, 0 0 70px #3498db inset;
-  transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
-  z-index: 1000;
-  animation: pulse 1.2s infinite, swing 2s infinite;
-}
-#music-icon:hover { transform: scale(1.3); box-shadow: 0 0 50px #3498db, 0 0 100px #3498db inset; }
-#music-icon.playing { background: rgba(231, 76, 60, 0.95); color: #fff; box-shadow: 0 0 50px #e74c3c, 0 0 100px #e74c3c inset; }
-
-/* Pulse animation */
-@keyframes pulse {
-  0% { transform: scale(1); box-shadow: 0 0 35px #3498db, 0 0 70px #3498db inset; }
-  50% { transform: scale(1.2); box-shadow: 0 0 55px #3498db, 0 0 100px #3498db inset; }
-  100% { transform: scale(1); box-shadow: 0 0 35px #3498db, 0 0 70px #3498db inset; }
-}
-
-/* Swing animation */
-@keyframes swing {
-  0% { transform: rotate(0deg); }
-  25% { transform: rotate(10deg); }
-  50% { transform: rotate(-10deg); }
-  75% { transform: rotate(10deg); }
-  100% { transform: rotate(0deg); }
 }
 </style>
 </head>
 
 <body>
-<!-- Cake -->
+
 <div class="cake">
   <div class="cream"></div>
   <div class="drip drip1"></div>
@@ -108,38 +125,37 @@ p { color: #bdc3c7; font-size: 36px; font-weight: bold; font-style: italic; text
   <div class="candle"><div class="flame"></div></div>
 </div>
 
-<h2>Happy Birthday My naughty Hasan 😝!</h2>
-<p>lovak baby 🥰 💙</p>
+<h2>
+  Happy Birthday My
+  <span class="highlight">Naughty Hassan 😝!</span>
+</h2>
 
-<!-- Music icon -->
+<p>lovak baby 💙</p>
+
 <div id="music-icon">🎵</div>
 
-<!-- Audio -->
 <audio id="bg-music" loop>
   <source src="birthdaysong (online-audio-converter.com).mp3" type="audio/mpeg">
 </audio>
 
 <script>
-// Audio control
+// Audio
 const audio = document.getElementById("bg-music");
 const icon = document.getElementById("music-icon");
-audio.volume = 0.5;
 
-// Click icon to start/pause music
 icon.addEventListener("click", () => {
   if (audio.paused) {
     audio.play();
-    icon.classList.add("playing");
   } else {
     audio.pause();
-    icon.classList.remove("playing");
   }
 });
 
-// Floating hearts
+// 💖 Hearts (FIXED)
 function createHeart() {
   let heart = document.createElement("div");
   heart.classList.add("heart");
+
   let size = 15 + Math.random() * 15;
   heart.style.width = size + "px";
   heart.style.height = size + "px";
@@ -150,16 +166,22 @@ function createHeart() {
   heart.style.background = color;
   heart.style.boxShadow = "0 0 15px " + color;
 
-  heart.innerHTML = `<div style="position:absolute;width:${size}px;height:${size}px;background:${color};border-radius:50%;top:-${size/2}px;"></div>
-  <div style="position:absolute;width:${size}px;height:${size}px;background:${color};border-radius:50%;left:-${size/2}px;"></div>`;
+  heart.innerHTML = `
+    <div style="position:absolute;width:${size}px;height:${size}px;background:${color};border-radius:50%;top:-${size/2}px;"></div>
+    <div style="position:absolute;width:${size}px;height:${size}px;background:${color};border-radius:50%;left:-${size/2}px;"></div>
+  `;
+
   document.body.appendChild(heart);
 }
 
 // Initial hearts
-for (let i = 0; i < 35; i++) createHeart();
+for (let i = 0; i < 30; i++) createHeart();
 
-// Click anywhere else adds more hearts
-document.addEventListener("click", () => { for(let i=0;i<20;i++) createHeart(); });
+// Click adds more
+document.addEventListener("click", () => {
+  for (let i = 0; i < 15; i++) createHeart();
+});
 </script>
+
 </body>
 </html>
